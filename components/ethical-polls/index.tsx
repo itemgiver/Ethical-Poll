@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import Poll from "@components/poll";
+import PostPoll from "@lib/utils/postPoll";
 
 function EthicalPolls() {
+  useEffect(() => {
+    PostPoll(3, "Question 3?");
+  }, []);
+
   return (
     <div>
       <Poll id={1} />
