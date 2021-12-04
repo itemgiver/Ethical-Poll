@@ -1,32 +1,18 @@
-import { useCollection } from "react-firebase-hooks/firestore";
-import firebase from "firebase/app";
-import type PollType from "@models/poll";
-import CollectionName from "@lib/firebase/collections";
+import GetPoll from "@lib/utils/getPoll";
 
 type Props = {
   id: number;
 };
 
 function Poll(props: Props) {
-  const [value, loading, error] = useCollection<PollType>(
-    firebase
-      .firestore()
-      .collection(CollectionName.POLL)
-      .where("id", "==", props.id),
-    {
-      snapshotListenOptions: { includeMetadataChanges: true },
-    }
-  );
-
-  if (loading) return <div>Loading</div>;
-  if (error) return <div>Error</div>;
-  if (!value) return null;
-
-  const poll = value.docs[0].data();
+  const [value, loading, error] = GetPoll(props.id);
+  const flag = loading || error || !value || value.docs.length === 0;
+  const poll = flag ? null : value.docs[0].data();
 
   return (
     <div>
-      {poll && (
+      {flag && <div>Loading</div>}
+      {!flag && (
         <div>
           <p>Number : {poll.id}</p>
           <p>Question : {poll.question}</p>
