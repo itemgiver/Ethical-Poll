@@ -11,8 +11,9 @@ function Poll(props: Props) {
 
   return (
     <div>
-      {flag && <div>Loading</div>}
-      {!flag && (
+      {flag ? (
+        <div>Loading</div>
+      ) : (
         <div>
           <p>Number : {poll.id}</p>
           <p>Question : {poll.question}</p>
