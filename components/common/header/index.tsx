@@ -1,10 +1,12 @@
-import { Typography } from "antd";
 import styles from "./index.module.scss";
+import { PageHeader } from "antd";
 
 export default function Header() {
   return (
-    <div className={styles.container}>
-      <Typography.Title>Ethical Poll Website</Typography.Title>
-    </div>
+    <PageHeader
+      className={styles.container}
+      title="ETHICAL POLL"
+      subTitle="Ethical Issue Poll Website"
+    />
   );
 }
