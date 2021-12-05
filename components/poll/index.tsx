@@ -5,7 +5,7 @@ type Props = {
 };
 
 function Poll(props: Props) {
-  const [value, loading, error] = GetPoll(props.id);
+  const [value, loading, error] = GetPoll({ id: props.id });
   const flag = loading || error || !value || value.docs.length === 0;
   const poll = flag ? {} : value.docs[0].data();
 

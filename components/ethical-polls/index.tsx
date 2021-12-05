@@ -4,7 +4,10 @@ import PostPoll from "@lib/utils/postPoll";
 
 function EthicalPolls() {
   useEffect(() => {
-    PostPoll(3, "Question 3?");
+    PostPoll({
+      id: 3,
+      question: "Question 3?",
+    });
   }, []);
 
   return (
