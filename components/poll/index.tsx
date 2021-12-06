@@ -146,6 +146,7 @@ function Poll(props: Props) {
   /* FIXME: sumbit 누르면 checkboxItem -> resultItem으로 변경 필요(api 연결) */
   const pollContent = props.id % 2 ? checkboxItem : resultItem;
 
+  /* TODO: 댓글 관련 Content */
   const discussionContent = "notDeveloped";
 
   return (
