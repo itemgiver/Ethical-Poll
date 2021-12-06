@@ -73,6 +73,7 @@ const Main: NextPage = () => {
               color="primary"
               onClick={submit}
               style={{ height: "100%", width: "100%" }}
+              disabled={question === "" || questionId === ""}
             >
               Submit
             </Button>
