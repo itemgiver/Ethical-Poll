@@ -36,15 +36,17 @@ function Poll(props: Props) {
     else setAgree(value);
   }
 
-  const noWrap = {
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  };
-
   const checkboxContent = ( //FIXME: 데이터 연동 필요
     <Grid container spacing={2}>
-      <Grid item xs={6} style={noWrap}>
+      <Grid
+        item
+        xs={6}
+        style={{
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
         <Checkbox
           checked={agree === 1}
           color="primary"
@@ -52,7 +54,15 @@ function Poll(props: Props) {
         />
         Agree
       </Grid>
-      <Grid item xs={6} style={noWrap}>
+      <Grid
+        item
+        xs={6}
+        style={{
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
         <Checkbox
           checked={agree === 0}
           color="secondary"
