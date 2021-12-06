@@ -22,11 +22,6 @@ function Poll(props: Props) {
     },
   ];
 
-  const contentList = {
-    Poll: <p>poll</p>,
-    Discussion: <p>discussion</p>,
-  };
-
   const [activeTabKey1, setActiveTabKey1] = useState("Poll");
 
   const onPollChange = (key: React.SetStateAction<string>) => {
@@ -48,7 +43,7 @@ function Poll(props: Props) {
             onPollChange(key);
           }}
         >
-          {contentList[activeTabKey1]}
+          {activeTabKey1}
         </Card>
       )}
     </div>
