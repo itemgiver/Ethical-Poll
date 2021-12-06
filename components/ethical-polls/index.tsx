@@ -1,41 +1,14 @@
-import { useEffect } from "react";
 import Poll from "@components/poll";
-import PostPoll from "@lib/utils/postPoll";
-import { List, Card } from "antd";
 
 function EthicalPolls() {
-  useEffect(() => {
-    PostPoll({
-      id: 4,
-      question: "Question 3?",
-    });
-  }, []);
-
-  const data = [
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    },
-  ];
+  const data = Array.from(Array(100).keys()).map((idx) => ({ id: idx })); //FIXME: 존재하는 id만 불러오는 api 필요
 
   return (
-    <List
-      grid={{ gutter: 16, column: 3 }}
-      dataSource={data}
-      renderItem={(item) => (
-        <List.Item>
-          <Poll id={item.id} />
-        </List.Item>
-      )}
-    />
+    <>
+      {data.map((el, idx) => (
+        <Poll id={el.id} key={idx} />
+      ))}
+    </>
   );
 }
 
