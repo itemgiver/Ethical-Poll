@@ -87,12 +87,12 @@ function Poll(props: Props) {
           {
             title: "Agree",
             value: agree_percentage,
-            color: "#d79d91",
+            color: "#6bb7c7",
           },
           {
             title: "Disagree",
             value: disagree_percentage,
-            color: "#6bb7c7",
+            color: "#d79d91",
           },
         ]}
         lineWidth={18} //width
