@@ -15,8 +15,7 @@ function Poll(props: Props) {
   const poll = flag ? {} : value.docs[0].data();
 
   const [toggle, setToggle] = useState("survey");
-
-  const cardHeight = 350;
+  const cardHeight = 400;
 
   const submitAgree = () => {
     PostPoll({
@@ -40,18 +39,19 @@ function Poll(props: Props) {
 
   const checkboxContent = (
     <div className="site-button-ghost-wrapper">
-      <Row style={{width: '100%'}}>
-        <Col span={12} style={{padding: '10px'}}>
+      <Row style={{width: '100%', height: '300px', verticalAlign: 'middle'}}>
+        <Col span={12} style={{padding: '0 30px'}}>
           <Button 
-            style={{width: "100%", height: '100px'}}
+            style={{width: "100%", height: '100px', margin:'100px 0'}}
             type="primary" ghost
             onClick={submitAgree}>
             AGREE
           </Button>
         </Col>
-        <Col span={12} style={{padding: '10px'}}>
+        
+        <Col span={12} style={{padding: '0 30px'}}>
           <Button 
-            style={{width: "100%", height: '100px'}}
+            style={{width: "100%", height: '100px', margin:'100px 0'}}
             type="primary" danger ghost
             onClick={submitDisagree}>
             DISAGREE
@@ -69,8 +69,8 @@ function Poll(props: Props) {
     <div>
       <PieChart
         data={[
-          {title: 'Agree', value:40, color: '#d79d91'},
-          {title: 'Disagree', value:60, color: '#6bb7c7'}
+          {title: 'Agree', value:40, color: '#6bb7c7'},
+          {title: 'Disagree', value:60, color: '#d79d91'}
         ]}
         lineWidth={18} //width
         background="#f3f3f3"
@@ -84,12 +84,17 @@ function Poll(props: Props) {
           fontSize: "6px",
           fill: "#33333",
         }}
-        style={{ width: "250px", display: "inline-block" }}
+        style={{ height: "250px", display: "inline-block" }}
       ></PieChart>
-      <Button
-        onClick={unsubmit}>
-        Vote Again
-      </Button>
+
+      <div style={{width: '100%', display: 'inline-block',                 alignItems: "center",
+                  justifyContent: "center"}}>
+        <Button
+          style={{display: 'inline-block', justifyContent: "center"}}
+          onClick={unsubmit}>
+          Vote Again
+        </Button>
+      </div>
     </div>
   );
 
@@ -123,13 +128,14 @@ function Poll(props: Props) {
               alignItems: "center",
               justifyContent: "center",
             }}
-            title={poll.id + ". " + poll.question}
+            title={"Q. " + poll.question}
           >
             <div
               style={{
                 alignItems: "center",
                 justifyContent: "center",
                 width: "100%",
+                verticalAlign: 'middle',
               }}
             >
               {pollContent}
