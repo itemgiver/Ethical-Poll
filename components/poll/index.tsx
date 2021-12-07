@@ -73,13 +73,27 @@ function Poll(props: Props) {
   const unsubmit = () => {
     setToggle("survey");
   };
+  const agree_percentage = Number(
+    ((poll.agree * 100.0) / (poll.agree + poll.disagree)).toFixed(1)
+  );
+  const disagree_percentage = Number(
+    ((poll.disagree * 100.0) / (poll.agree + poll.disagree)).toFixed(1)
+  );
 
   const resultItem = (
     <div>
       <PieChart
         data={[
-          {title: 'Agree', value:40, color: '#6bb7c7'},
-          {title: 'Disagree', value:60, color: '#d79d91'}
+          {
+            title: "Agree",
+            value: agree_percentage,
+            color: "#d79d91",
+          },
+          {
+            title: "Disagree",
+            value: disagree_percentage,
+            color: "#6bb7c7",
+          },
         ]}
         lineWidth={18} //width
         background="#f3f3f3"
@@ -93,7 +107,7 @@ function Poll(props: Props) {
         }}
         style={{ height: "250px", display: "inline-block" }}
       ></PieChart>
-      
+
       <Button onClick={unsubmit}>Vote Again</Button>
     </div>
   );
