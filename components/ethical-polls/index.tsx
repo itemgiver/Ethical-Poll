@@ -75,7 +75,7 @@ export default function EthicalPolls() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                  label="New Qeustion"
+                  label="New Question"
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   onKeyPress={handleKeyPress}
