@@ -19,13 +19,20 @@ async function PostPollInfo(props: Props) {
     .collection(CollectionName.POLL_INFO)
     .doc(pollPathId);
 
-  const str_id = "poll_" + props.id + ".id";
-  const str_question = "poll_" + props.id + ".question";
+  const json =
+    '{"poll_' +
+    props.id +
+    '.id": ' +
+    props.id +
+    ', "poll_' +
+    props.id +
+    '.question": "' +
+    props.question +
+    `"}`;
+  console.log(json);
+  console.log(JSON.parse(json));
 
-  pollRef.update({
-    "${str_id}": props.id,
-    "${str_question}": props.question,
-  });
+  pollRef.update(JSON.parse(json));
 }
 
 export default PostPollInfo;

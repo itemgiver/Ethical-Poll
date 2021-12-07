@@ -121,7 +121,7 @@ function Poll(props: Props) {
         fill: "#33333",
       }}
       labelPosition={0}
-      style={{ width: "250px", display: 'inline-block'}}
+      style={{ width: "250px", display: "inline-block" }}
     ></PieChart>
     // <div
     //   style={{width: '100%', display: 'inline-block'}}>
@@ -164,7 +164,13 @@ function Poll(props: Props) {
             }}
             title={poll.id + ". " + poll.question}
           >
-            <div style={{ alignItems: "center", justifyContent: "center", width: '100%'}}>
+            <div
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
               {pollContent}
             </div>
           </Card>
