@@ -67,7 +67,7 @@ const Main: NextPage = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={2} style={{ padding: "12px 32px 12px 12px" }}>
+          <Grid item xs={2}>
             <Button
               variant="contained"
               color="primary"
