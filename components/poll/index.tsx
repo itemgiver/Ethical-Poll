@@ -49,18 +49,18 @@ function Poll(props: Props) {
   const checkboxContent = (
     <div className="site-button-ghost-wrapper">
       <Row style={{width: '100%', height: '300px', verticalAlign: 'middle'}}>
-        <Col span={12} style={{padding: '0 30px'}}>
+        <Col span={12} style={{padding: '70px 40px'}}>
           <Button 
-            style={{width: "100%", height: '100px', margin:'100px 0'}}
+            style={{width: "100%", height: '100%', fontSize: '25px'}}
             type="primary" ghost
             onClick={submitAgree}>
             AGREE
           </Button>
         </Col>
         
-        <Col span={12} style={{padding: '0 30px'}}>
+        <Col span={12} style={{padding: '70px 40px'}}>
           <Button 
-            style={{width: "100%", height: '100px', margin:'100px 0'}}
+            style={{width: "100%", height: '100%', fontSize: '25px'}}
             type="primary" danger ghost
             onClick={submitDisagree}>
             DISAGREE
@@ -108,7 +108,13 @@ function Poll(props: Props) {
         style={{ height: "250px", display: "inline-block" }}
       ></PieChart>
 
-      <Button onClick={unsubmit}>Vote Again</Button>
+      <div style={{display: 'inline-block', width: '100%', textAlign: 'center', margin:'10px 0'}}>
+        <Button 
+          style={{height: '100%', width:'100px'}}
+          onClick={unsubmit}>
+          Vote Again
+        </Button>
+      </div>
     </div>
   );
 
