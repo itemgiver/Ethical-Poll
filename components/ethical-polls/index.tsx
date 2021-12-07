@@ -36,6 +36,7 @@ export default function EthicalPolls() {
   const [value, loading, error] = GetPollInfo();
   const flag = loading || error || !value || value.docs.length === 0;
   const polls: SimplePoll[] = [];
+  const new_id = flag ? 0 : value.docs[0].data().len + 1;
 
   if (!flag) {
     for (var i = 1; i <= value.docs[0].data().len; i++) {
@@ -49,7 +50,7 @@ export default function EthicalPolls() {
 
   function submit() {
     PostPoll({
-      id: value.docs[0].data().len + 1,
+      id: new_id,
       question: question,
       agree: 0,
       disagree: 0,
