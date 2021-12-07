@@ -163,8 +163,12 @@ function Poll(props: Props) {
         fill: "#33333",
       }}
       labelPosition={0}
-      style={{ width: "250px" }}
+      style={{ width: "250px", display: 'inline-block'}}
     ></PieChart>
+    // <div
+    //   style={{width: '100%', display: 'inline-block'}}>
+    //   Hello
+    // </div>
   );
 
   /* FIXME: sumbit 누르면 checkboxItem -> resultItem으로 변경 필요(api 연결) */
@@ -202,7 +206,7 @@ function Poll(props: Props) {
             }}
             title={poll.id + ". " + poll.question}
           >
-            <div style={{ alignItems: "center", justifyContent: "center" }}>
+            <div style={{ alignItems: "center", justifyContent: "center", width: '100%'}}>
               {pollContent}
             </div>
           </Card>
