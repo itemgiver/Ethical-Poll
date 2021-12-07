@@ -98,9 +98,7 @@ export default function EthicalPolls() {
           </Grid>
         </Grid>
 
-        {/* <Grid container item spacing={2}> */}
         <PollTabs polls={polls} />
-        {/* </Grid> */}
       </Grid>
     </div>
   );

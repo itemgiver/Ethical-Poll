@@ -17,15 +17,15 @@ type Props = {
 function PollTabs(props: Props) {
   const poll_tab = (question: string) => {
     return (
-      <Card
+      <div
         style={{
           width: "300px",
-          wordBreak: "break-all",
           wordWrap: "break-word",
+          whiteSpace: 'normal',
         }}
       >
         {question}
-      </Card>
+      </div>
     );
   };
 
