@@ -4,7 +4,7 @@ import { Card } from "antd";
 import { Grid, Checkbox, Button, TextField } from "@material-ui/core";
 import { RadialChart } from "react-vis";
 import { Comment, Avatar } from "antd";
-import { PieChart } from 'react-minimal-pie-chart'
+import { PieChart } from "react-minimal-pie-chart";
 
 type Props = {
   id: number;
@@ -147,24 +147,24 @@ function Poll(props: Props) {
       data={[
         {
           value: 20,
-          color: '#F6CB44',
-          name: 'name1',
+          color: "#F6CB44",
+          name: "name1",
         },
       ]}
       reveal={20} //percent
       lineWidth={18} //width
-      background='#f3f3f3'
+      background="#f3f3f3"
       lengthAngle={360}
       rounded
       animate
-      label={({dataEntry})=>dataEntry.value + '%'}
+      label={({ dataEntry }) => dataEntry.value + "%"}
       labelStyle={{
-        fontSize: '26px',
-        fill: '#33333',
+        fontSize: "26px",
+        fill: "#33333",
       }}
       labelPosition={0}
-      style={{width: '250px'}}>
-    </PieChart>
+      style={{ width: "250px" }}
+    ></PieChart>
   );
 
   /* FIXME: sumbit 누르면 checkboxItem -> resultItem으로 변경 필요(api 연결) */
@@ -194,10 +194,15 @@ function Poll(props: Props) {
       {!flag && (
         <div>
           <Card
-            style={{width: "100%", height: cardHeight, alignItems: 'center', justifyContent: 'center'}}
+            style={{
+              width: "100%",
+              height: cardHeight,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
             title={poll.id + ". " + poll.question}
           >
-            <div style={{alignItems: 'center', justifyContent: 'center'}}>
+            <div style={{ alignItems: "center", justifyContent: "center" }}>
               {pollContent}
             </div>
           </Card>
