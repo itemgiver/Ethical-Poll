@@ -79,24 +79,21 @@ function Poll(props: Props) {
   const resultItem = (
     <PieChart
       data={[
-        {
-          value: 20,
-          color: "#F6CB44",
-          name: "name1",
-        },
+        {title: 'Agree', value:40, color: '#d79d91'},
+        {title: 'Disagree', value:60, color: '#6bb7c7'}
       ]}
-      reveal={20} //percent
       lineWidth={18} //width
       background="#f3f3f3"
       lengthAngle={360}
       rounded
       animate
-      label={({ dataEntry }) => dataEntry.value + "%"}
+      label={({ dataEntry }) => 
+        dataEntry.title + ":" + dataEntry.value + "%"
+      }
       labelStyle={{
-        fontSize: "26px",
+        fontSize: "6px",
         fill: "#33333",
       }}
-      labelPosition={0}
       style={{ width: "250px", display: "inline-block" }}
     ></PieChart>
   );
