@@ -139,14 +139,14 @@ function Poll(props: Props) {
   const ExampleComment = () => (
     <Comment
       actions={[<span key="comment-nested-reply-to">Reply to</span>]}
-      author={<a>Han Solo</a>}
+      author={<a>Shin Yoo</a>}
       avatar={
-        <Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
+        <Avatar src="https://joeschmoe.io/api/v1/random" alt="Shin Yoo" />
       }
       content={
         <p>
-          We supply a series of design principles, practical patterns and high
-          quality design resources (Sketch and Axure).
+          This course is concerned with a broad range of ethical issues that are closely related to, or have their origins at, computing technology and their uses. The aim of the course is not to find the answer to these problems. 
+          Rather, we will examine them from various angles together and discuss what we can do.
         </p>
       }
     ></Comment>
