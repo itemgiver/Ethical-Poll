@@ -1,6 +1,6 @@
 import Poll from "@components/poll";
 import { Tabs, Radio, Space } from 'antd';
-import React from "react";
+import React, { useState } from "react";
 
 const { TabPane } = Tabs;
 
@@ -24,27 +24,17 @@ class EthicalPolls extends React.Component{
   render() {
     const { tabPosition } = this.state;
     const data = Array.from(Array(100).keys()).map((idx) => ({ id: idx })); //FIXME: 존재하는 id만 불러오는 api 필요
-    const question = <div style={{width: '100px', height: '100px', wordBreak: "break-all", wordWrap: "break-word"}}>
-      We have to ban macro programs. Macro programs are unmoral.
+    // FIXME Get Questions
+    const question = <div style={{width: '250px', wordBreak: "break-all", wordWrap: "break-word"}}> 
+      We have to ban macro programs.
     </div>
 
     return (
       <>
         <Tabs tabPosition={tabPosition} size={"large"}>
-          {/* <TabPane tab="We have to ban macro programs. Macro programs are unmoral." key="1"> */}
-          {/* <TabPane tab={question} key="1">
-            Content of Tab 1 Content of Tab 1 Content of Tab 1 Content of Tab 1 Content of Tab 1 Content of Tab 1 Content of Tab 1 Content of Tab 1
-          </TabPane>
-          <TabPane tab="Tab 2" key="2">
-            Content of Tab 2
-          </TabPane>
-          <TabPane tab="Tab 3" key="3">
-            Content of Tab 3
-          </TabPane> */}
             {data.map((el, idx) => (
-              <TabPane tab='tabname' key={idx}> 
-                {idx}
-                <Poll id={el.id} key={idx} />
+              <TabPane tab={question} key={idx}> 
+                <Poll id={el.id} key={idx}/>
               </TabPane>
             ))}
         </Tabs>
