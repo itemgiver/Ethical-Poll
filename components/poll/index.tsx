@@ -175,12 +175,7 @@ function Poll(props: Props) {
           >
             <div>
               {pollContent}
-              <ExampleComment>
-                <ExampleComment>
-                  <ExampleComment />
-                  <ExampleComment />
-                </ExampleComment>
-              </ExampleComment>
+              <ExampleComment></ExampleComment>
             </div>
           </Card>
       )}
