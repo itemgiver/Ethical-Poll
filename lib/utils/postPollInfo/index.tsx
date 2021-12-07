@@ -20,7 +20,9 @@ async function PostPollInfo(props: Props) {
     .doc(pollPathId);
 
   const json =
-    '{"poll_' +
+    '{"len": ' +
+    props.id +
+    ', "poll_' +
     props.id +
     '.id": ' +
     props.id +
@@ -29,8 +31,6 @@ async function PostPollInfo(props: Props) {
     '.question": "' +
     props.question +
     `"}`;
-  console.log(json);
-  console.log(JSON.parse(json));
 
   pollRef.update(JSON.parse(json));
 }
