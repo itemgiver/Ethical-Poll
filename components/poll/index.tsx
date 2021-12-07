@@ -16,29 +16,9 @@ function Poll(props: Props) {
   const flag = loading || error || !value || value.docs.length === 0;
   const poll = flag ? {} : value.docs[0].data();
 
-  const tabList = [
-    {
-      key: "Poll",
-      tab: "Poll",
-    },
-    {
-      key: "Discussion",
-      tab: "Discussion",
-    },
-  ];
-
   const [activeTabKey1, setActiveTabKey1] = useState("Poll");
 
-  const onPollChange = (key: React.SetStateAction<string>) => {
-    setActiveTabKey1(key);
-  };
-
-  function handleCheck(value: number) {
-    if (agree === value) setAgree(-1);
-    else setAgree(value);
-  }
-
-  const checkboxContent = ( //FIXME: 데이터 연동 필요
+  const checkboxContent = (
     <Grid container spacing={2}>
       <Grid
         item
@@ -52,7 +32,7 @@ function Poll(props: Props) {
         <Checkbox
           checked={agree === 1}
           color="primary"
-          onChange={() => handleCheck(1)}
+          onChange={() => setAgree(1)}
         />
         Agree
       </Grid>
@@ -68,7 +48,7 @@ function Poll(props: Props) {
         <Checkbox
           checked={agree === 0}
           color="secondary"
-          onChange={() => handleCheck(0)}
+          onChange={() => setAgree(0)}
         />
         Disagree
       </Grid>
@@ -96,10 +76,6 @@ function Poll(props: Props) {
     </Grid>
   );
 
-  const value1 = 123;
-  const value2 = 134;
-  const value3 = 24;
-  const sum = value1 + value2 + value3;
   const resultItem = (
     <PieChart
       data={[
@@ -123,10 +99,6 @@ function Poll(props: Props) {
       labelPosition={0}
       style={{ width: "250px", display: "inline-block" }}
     ></PieChart>
-    // <div
-    //   style={{width: '100%', display: 'inline-block'}}>
-    //   Hello
-    // </div>
   );
 
   /* FIXME: sumbit 누르면 checkboxItem -> resultItem으로 변경 필요(api 연결) */
