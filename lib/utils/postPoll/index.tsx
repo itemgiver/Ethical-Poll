@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import CollectionName from "@lib/firebase/collections";
+import PostPollInfo from "@lib/utils/postPollInfo";
 
 type Props = {
   id: number;
@@ -29,6 +30,8 @@ async function PostPoll(props: Props) {
 
     pollRef.update(props);
   }
+
+  PostPollInfo({ id: props.id, question: props.question });
 }
 
 export default PostPoll;
