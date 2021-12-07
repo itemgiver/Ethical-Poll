@@ -15,6 +15,7 @@ function Poll(props: Props) {
   const flag = loading || error || !value || value.docs.length === 0;
   const poll = flag ? {} : value.docs[0].data();
 
+  const [agree, setAgree] = useState(-1);
   const [toggle, setToggle] = useState("survey");
   const cardHeight = 400;
 
@@ -22,47 +23,54 @@ function Poll(props: Props) {
     PostPoll({
       id: poll.id,
       question: poll.question,
-      agree: poll.agree + 1,
-      disagree: poll.disagree + 0,
+      agree: poll.agree + (agree !== 1 ? 1 : 0),
+      disagree: poll.disagree + (agree === 0 ? -1 : 0),
     });
     setToggle("result");
     if (props.onChange) {
       const json = '{"id": ' + props.id + ', "agree": ' + 1 + "}";
       props.onChange(JSON.parse(json));
     }
+    setAgree(1);
   };
 
   const submitDisagree = () => {
     PostPoll({
       id: poll.id,
       question: poll.question,
-      agree: poll.agree + 0,
-      disagree: poll.disagree + 1,
+      agree: poll.agree + (agree === 1 ? -1 : 0),
+      disagree: poll.disagree + (agree !== 0 ? 1 : 0),
     });
     setToggle("result");
     if (props.onChange) {
       const json = '{"id": ' + props.id + ', "agree": ' + 0 + "}";
       props.onChange(JSON.parse(json));
     }
+    setAgree(0);
   };
 
   const checkboxContent = (
     <div className="site-button-ghost-wrapper">
-      <Row style={{width: '100%', height: '300px', verticalAlign: 'middle'}}>
-        <Col span={12} style={{padding: '0 30px'}}>
-          <Button 
-            style={{width: "100%", height: '100px', margin:'100px 0'}}
-            type="primary" ghost
-            onClick={submitAgree}>
+      <Row style={{ width: "100%", height: "300px", verticalAlign: "middle" }}>
+        <Col span={12} style={{ padding: "0 30px" }}>
+          <Button
+            style={{ width: "100%", height: "100px", margin: "100px 0" }}
+            type="primary"
+            ghost
+            onClick={submitAgree}
+          >
             AGREE
           </Button>
         </Col>
-        
-        <Col span={12} style={{padding: '0 30px'}}>
-          <Button 
-            style={{width: "100%", height: '100px', margin:'100px 0'}}
-            type="primary" danger ghost
-            onClick={submitDisagree}>
+
+        <Col span={12} style={{ padding: "0 30px" }}>
+          <Button
+            style={{ width: "100%", height: "100px", margin: "100px 0" }}
+            type="primary"
+            danger
+            ghost
+            onClick={submitDisagree}
+          >
             DISAGREE
           </Button>
         </Col>
@@ -148,7 +156,7 @@ function Poll(props: Props) {
                 alignItems: "center",
                 justifyContent: "center",
                 width: "100%",
-                verticalAlign: 'middle',
+                verticalAlign: "middle",
               }}
             >
               {pollContent}
