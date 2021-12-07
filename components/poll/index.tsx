@@ -7,6 +7,7 @@ import PostPoll from "@lib/utils/postPoll";
 
 type Props = {
   id: number;
+  onChange: any;
 };
 
 function Poll(props: Props) {
@@ -25,6 +26,10 @@ function Poll(props: Props) {
       disagree: poll.disagree + 0,
     });
     setToggle("result");
+    if (props.onChange) {
+      const json = '{"id": ' + props.id + ', "agree": ' + 1 + "}";
+      props.onChange(JSON.parse(json));
+    }
   };
 
   const submitDisagree = () => {
@@ -35,7 +40,11 @@ function Poll(props: Props) {
       disagree: poll.disagree + 1,
     });
     setToggle("result");
-  }
+    if (props.onChange) {
+      const json = '{"id": ' + props.id + ', "agree": ' + 0 + "}";
+      props.onChange(JSON.parse(json));
+    }
+  };
 
   const checkboxContent = (
     <div className="site-button-ghost-wrapper">
@@ -77,29 +86,19 @@ function Poll(props: Props) {
         lengthAngle={360}
         rounded
         animate
-        label={({ dataEntry }) => 
-          dataEntry.title + ":" + dataEntry.value + "%"
-        }
+        label={({ dataEntry }) => dataEntry.title + ":" + dataEntry.value + "%"}
         labelStyle={{
           fontSize: "6px",
           fill: "#33333",
         }}
         style={{ height: "250px", display: "inline-block" }}
       ></PieChart>
-
-      <div style={{width: '100%', display: 'inline-block',                 alignItems: "center",
-                  justifyContent: "center"}}>
-        <Button
-          style={{display: 'inline-block', justifyContent: "center"}}
-          onClick={unsubmit}>
-          Vote Again
-        </Button>
-      </div>
+      
+      <Button onClick={unsubmit}>Vote Again</Button>
     </div>
   );
 
   const pollContent = toggle === "survey" ? checkboxContent : resultItem;
-
 
   const ExampleComment = () => (
     <Comment

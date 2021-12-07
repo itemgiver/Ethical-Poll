@@ -29,12 +29,16 @@ function PollTabs(props: Props) {
     );
   };
 
+  const eventHandler = (data: any) => {
+    console.log(data);
+  };
+
   return (
     <>
       <Tabs tabPosition={"left"} size={"large"}>
         {props.polls.map((poll, idx) => (
           <TabPane tab={poll_tab(poll.question)} key={idx}>
-            <Poll id={poll.id} key={idx} />
+            <Poll id={poll.id} onChange={eventHandler} />
           </TabPane>
         ))}
       </Tabs>
