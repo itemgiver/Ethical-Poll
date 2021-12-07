@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Grid, TextField, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import PostPoll from "@lib/utils/postPoll";
+import PostPollInfo from "@lib/utils/postPollInfo";
 import GetPollInfo from "@lib/utils/getPollInfo";
 
 type SimplePoll = {
@@ -54,7 +55,11 @@ export default function EthicalPolls() {
       question: question,
       agree: 0,
       disagree: 0,
-    }).then((res) => console.log(res));
+    });
+    PostPollInfo({
+      id: new_id,
+      question: question,
+    });
   }
 
   return (
