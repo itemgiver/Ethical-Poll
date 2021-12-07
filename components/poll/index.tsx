@@ -87,22 +87,24 @@ function Poll(props: Props) {
   const disagree_percentage = Number(
     ((poll.disagree * 100.0) / (poll.agree + poll.disagree)).toFixed(1)
   );
+  const agree_json = {
+    title: "Agree",
+    value: agree_percentage,
+    color: "#6bb7c7",
+  };
+  const disagree_json = {
+    title: "Disagree",
+    value: disagree_percentage,
+    color: "#d79d91",
+  };
+  const json_array = [];
+  if (agree_percentage !== 0) json_array.push(agree_json);
+  if (disagree_percentage !== 0) json_array.push(disagree_json);
 
   const resultItem = (
     <div>
       <PieChart
-        data={[
-          {
-            title: "Agree",
-            value: agree_percentage,
-            color: "#6bb7c7",
-          },
-          {
-            title: "Disagree",
-            value: disagree_percentage,
-            color: "#d79d91",
-          },
-        ]}
+        data={json_array}
         lineWidth={18} //width
         background="#f3f3f3"
         lengthAngle={360}
