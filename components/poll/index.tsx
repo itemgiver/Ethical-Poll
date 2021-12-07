@@ -18,7 +18,7 @@ function Poll(props: Props) {
 
   const [agree, setAgree] = useState(-1);
   const [toggle, setToggle] = useState("survey");
-  const cardHeight = 400;
+  const cardHeight = 300;
 
   const submitAgree = () => {
     PostPoll({
@@ -172,7 +172,6 @@ function Poll(props: Props) {
           <Card
             style={{
               width: "100%",
-              height: cardHeight,
               alignItems: "center",
               justifyContent: "center",
               whiteSpace: 'normal',
@@ -181,6 +180,7 @@ function Poll(props: Props) {
           >
             <div
               style={{
+                height: cardHeight,
                 alignItems: "center",
                 justifyContent: "center",
                 width: "100%",
