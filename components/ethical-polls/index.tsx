@@ -49,6 +49,7 @@ export default function EthicalPolls() {
   }
 
   function submit() {
+    setQuestion("");
     PostPoll({
       id: new_id,
       question: question,
