@@ -1,8 +1,6 @@
 import GetPoll from "@lib/utils/getPoll";
 import React, { useState } from "react";
-import { Card, Button } from "antd";
-import { Grid, Checkbox, TextField } from "@material-ui/core";
-import { RadialChart } from "react-vis";
+import { Card, Button, Row, Col } from "antd";
 import { Comment, Avatar } from "antd";
 import { PieChart } from "react-minimal-pie-chart";
 import PostPoll from "@lib/utils/postPoll";
@@ -12,83 +10,60 @@ type Props = {
 };
 
 function Poll(props: Props) {
-  const [agree, setAgree] = useState(-1);
   const [value, loading, error] = GetPoll({ id: props.id });
   const flag = loading || error || !value || value.docs.length === 0;
   const poll = flag ? {} : value.docs[0].data();
 
   const [toggle, setToggle] = useState("survey");
 
-  const checkboxContent = (
-    <Grid container spacing={2}>
-      <Grid
-        item
-        xs={6}
-        style={{
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-        }}
-      >
-        <Checkbox
-          checked={agree === 1}
-          color="primary"
-          onChange={() => setAgree(1)}
-        />
-        Agree
-      </Grid>
-      <Grid
-        item
-        xs={6}
-        style={{
-          whiteSpace: "nowrap",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-        }}
-      >
-        <Checkbox
-          checked={agree === 0}
-          color="secondary"
-          onChange={() => setAgree(0)}
-        />
-        Disagree
-      </Grid>
-    </Grid>
-  );
-
   const cardHeight = 350;
-  const buttonHeight = "3em";
-  const submit = () => {
+
+  const submitAgree = () => {
     PostPoll({
       id: poll.id,
       question: poll.question,
-      agree: poll.agree + (agree === 1) ? 1 : 0,
-      disagree: poll.disagree + (agree === 0) ? 1 : 0,
+      agree: poll.agree + 1,
+      disagree: poll.disagree + 0,
     });
     setToggle("result");
   };
 
+  const submitDisagree = () => {
+    PostPoll({
+      id: poll.id,
+      question: poll.question,
+      agree: poll.agree + 0,
+      disagree: poll.disagree + 1,
+    });
+    setToggle("result");
+  }
+
+  const checkboxContent = (
+    <div className="site-button-ghost-wrapper">
+      <Row style={{width: '100%'}}>
+        <Col span={12} style={{padding: '10px'}}>
+          <Button 
+            style={{width: "100%", height: '100px'}}
+            type="primary" ghost
+            onClick={submitAgree}>
+            AGREE
+          </Button>
+        </Col>
+        <Col span={12} style={{padding: '10px'}}>
+          <Button 
+            style={{width: "100%", height: '100px'}}
+            type="primary" danger ghost
+            onClick={submitDisagree}>
+            DISAGREE
+          </Button>
+        </Col>
+      </Row>
+    </div>
+  );
+
   const unsubmit = () => {
     setToggle("survey");
   };
-
-  const checkboxItem = (
-    <Grid container style={{ height: cardHeight }}>
-      <Grid container item>
-        {checkboxContent}
-      </Grid>
-      <Grid container item justifyContent="center">
-        <Button
-          // variant="contained"
-          // color="primary"
-          onClick={submit}
-          // style={{ height: buttonHeight, width: "100%" }}
-        >
-          Submit
-        </Button>
-      </Grid>
-    </Grid>
-  );
 
   const resultItem = (
     <div>
@@ -118,10 +93,8 @@ function Poll(props: Props) {
     </div>
   );
 
-  const pollContent = toggle === "survey" ? checkboxItem : resultItem;
+  const pollContent = toggle === "survey" ? checkboxContent : resultItem;
 
-  /* TODO: 댓글 관련 Content */
-  const discussionContent = "notDeveloped";
 
   const ExampleComment = () => (
     <Comment
