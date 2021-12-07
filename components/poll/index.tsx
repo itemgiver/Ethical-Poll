@@ -1,7 +1,7 @@
 import GetPoll from "@lib/utils/getPoll";
 import React, { useState } from "react";
-import { Card } from "antd";
-import { Grid, Checkbox, Button, TextField } from "@material-ui/core";
+import { Card, Button } from "antd";
+import { Grid, Checkbox, TextField } from "@material-ui/core";
 import { RadialChart } from "react-vis";
 import { Comment, Avatar } from "antd";
 import { PieChart } from "react-minimal-pie-chart";
@@ -68,6 +68,10 @@ function Poll(props: Props) {
     setToggle("result");
   };
 
+  const unsubmit = () => {
+    setToggle("survey");
+  };
+
   const checkboxItem = (
     <Grid container style={{ height: cardHeight }}>
       <Grid container item>
@@ -75,10 +79,10 @@ function Poll(props: Props) {
       </Grid>
       <Grid container item justifyContent="center">
         <Button
-          variant="contained"
-          color="primary"
+          // variant="contained"
+          // color="primary"
           onClick={submit}
-          style={{ height: buttonHeight, width: "100%" }}
+          // style={{ height: buttonHeight, width: "100%" }}
         >
           Submit
         </Button>
@@ -87,25 +91,31 @@ function Poll(props: Props) {
   );
 
   const resultItem = (
-    <PieChart
-      data={[
-        {title: 'Agree', value:40, color: '#d79d91'},
-        {title: 'Disagree', value:60, color: '#6bb7c7'}
-      ]}
-      lineWidth={18} //width
-      background="#f3f3f3"
-      lengthAngle={360}
-      rounded
-      animate
-      label={({ dataEntry }) => 
-        dataEntry.title + ":" + dataEntry.value + "%"
-      }
-      labelStyle={{
-        fontSize: "6px",
-        fill: "#33333",
-      }}
-      style={{ width: "250px", display: "inline-block" }}
-    ></PieChart>
+    <div>
+      <PieChart
+        data={[
+          {title: 'Agree', value:40, color: '#d79d91'},
+          {title: 'Disagree', value:60, color: '#6bb7c7'}
+        ]}
+        lineWidth={18} //width
+        background="#f3f3f3"
+        lengthAngle={360}
+        rounded
+        animate
+        label={({ dataEntry }) => 
+          dataEntry.title + ":" + dataEntry.value + "%"
+        }
+        labelStyle={{
+          fontSize: "6px",
+          fill: "#33333",
+        }}
+        style={{ width: "250px", display: "inline-block" }}
+      ></PieChart>
+      <Button
+        onClick={unsubmit}>
+        Vote Again
+      </Button>
+    </div>
   );
 
   const pollContent = toggle === "survey" ? checkboxItem : resultItem;
