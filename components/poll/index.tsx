@@ -9,6 +9,7 @@ import PostPoll from "@lib/utils/postPoll";
 
 type Props = {
   id: number;
+  onChange: any;
 };
 
 function Poll(props: Props) {
@@ -66,6 +67,10 @@ function Poll(props: Props) {
       disagree: poll.disagree + (agree === 0) ? 1 : 0,
     });
     setToggle("result");
+    if (props.onChange) {
+      const json = '{"id": ' + props.id + ', "agree": ' + agree + "}";
+      props.onChange(JSON.parse(json));
+    }
   };
 
   const checkboxItem = (
@@ -89,17 +94,15 @@ function Poll(props: Props) {
   const resultItem = (
     <PieChart
       data={[
-        {title: 'Agree', value:40, color: '#d79d91'},
-        {title: 'Disagree', value:60, color: '#6bb7c7'}
+        { title: "Agree", value: 40, color: "#d79d91" },
+        { title: "Disagree", value: 60, color: "#6bb7c7" },
       ]}
       lineWidth={18} //width
       background="#f3f3f3"
       lengthAngle={360}
       rounded
       animate
-      label={({ dataEntry }) => 
-        dataEntry.title + ":" + dataEntry.value + "%"
-      }
+      label={({ dataEntry }) => dataEntry.title + ":" + dataEntry.value + "%"}
       labelStyle={{
         fontSize: "6px",
         fill: "#33333",
