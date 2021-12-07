@@ -4,6 +4,7 @@ import { Card } from "antd";
 import { Grid, Checkbox, Button, TextField } from "@material-ui/core";
 import { RadialChart } from "react-vis";
 import { Comment, Avatar } from "antd";
+import { PieChart } from 'react-minimal-pie-chart'
 
 type Props = {
   id: number;
@@ -100,48 +101,70 @@ function Poll(props: Props) {
   const value3 = 24;
   const sum = value1 + value2 + value3;
   const resultItem = (
-    <Grid container>
-      <Grid item xs={8}>
-        <RadialChart
-          data={[
-            {
-              angle: value1,
-              label: `value1(${Math.round((value1 / sum) * 100)}%)`,
-            },
-            {
-              angle: value2,
-              label: `value2(${Math.round((value2 / sum) * 100)}%)`,
-            },
-            {
-              angle: value3,
-              label: `value3(${Math.round((value3 / sum) * 100)}%)`,
-            },
-          ]}
-          width={cardHeight - 148 - 10}
-          height={cardHeight - 148 - 10}
-          showLabels
-          labelsStyle={{ fontWeight: "bold" }}
-        />
-      </Grid>
-      <Grid
-        container
-        item
-        xs={4}
-        direction="column"
-        style={{ width: "fit-content", padding: "1em" }}
-        spacing={2}
-      >
-        <Grid item>
-          <TextField label="A1" value={value1} color="primary" />
-        </Grid>
-        <Grid item>
-          <TextField label="A2" value={value2} color="primary" />
-        </Grid>
-        <Grid item>
-          <TextField label="A3" value={value3} color="primary" />
-        </Grid>
-      </Grid>
-    </Grid>
+    // <Grid container>
+    //   <Grid item xs={8}>
+    //     <RadialChart
+    //       data={[
+    //         {
+    //           angle: value1,
+    //           label: `value1(${Math.round((value1 / sum) * 100)}%)`,
+    //         },
+    //         {
+    //           angle: value2,
+    //           label: `value2(${Math.round((value2 / sum) * 100)}%)`,
+    //         },
+    //         {
+    //           angle: value3,
+    //           label: `value3(${Math.round((value3 / sum) * 100)}%)`,
+    //         },
+    //       ]}
+    //       width={cardHeight - 148 - 10}
+    //       height={cardHeight - 148 - 10}
+    //       showLabels
+    //       labelsStyle={{ fontWeight: "bold" }}
+    //     />
+    //   </Grid>
+    //   <Grid
+    //     container
+    //     item
+    //     xs={4}
+    //     direction="column"
+    //     style={{ width: "fit-content", padding: "1em" }}
+    //     spacing={2}
+    //   >
+    //     <Grid item>
+    //       <TextField label="A1" value={value1} color="primary" />
+    //     </Grid>
+    //     <Grid item>
+    //       <TextField label="A2" value={value2} color="primary" />
+    //     </Grid>
+    //     <Grid item>
+    //       <TextField label="A3" value={value3} color="primary" />
+    //     </Grid>
+    //   </Grid>
+    // </Grid>
+    <PieChart
+      data={[
+        {
+          value: 20,
+          color: '#F6CB44',
+          name: 'name1',
+        },
+      ]}
+      reveal={20} //percent
+      lineWidth={18} //width
+      background='#f3f3f3'
+      lengthAngle={360}
+      rounded
+      animate
+      label={({dataEntry})=>dataEntry.value + '%'}
+      labelStyle={{
+        fontSize: '26px',
+        fill: '#33333',
+      }}
+      labelPosition={0}
+      style={{width: '250px'}}>
+    </PieChart>
   );
 
   /* FIXME: sumbit 누르면 checkboxItem -> resultItem으로 변경 필요(api 연결) */
@@ -171,10 +194,12 @@ function Poll(props: Props) {
       {!flag && (
         <div>
           <Card
-            style={{ width: "100%", height: cardHeight }}
+            style={{width: "100%", height: cardHeight, alignItems: 'center', justifyContent: 'center'}}
             title={poll.id + ". " + poll.question}
           >
-            <div>{pollContent}</div>
+            <div style={{alignItems: 'center', justifyContent: 'center'}}>
+              {pollContent}
+            </div>
           </Card>
           <ExampleComment></ExampleComment>
         </div>

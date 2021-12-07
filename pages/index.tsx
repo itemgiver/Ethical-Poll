@@ -80,9 +80,9 @@ const Main: NextPage = () => {
           </Grid>
         </Grid>
 
-        <Grid container item spacing={2}>
+        {/* <Grid container item spacing={2}> */}
           <EthicalPolls />
-        </Grid>
+        {/* </Grid> */}
       </Grid>
     </div>
   );
