@@ -1,5 +1,5 @@
 import Poll from "@components/poll";
-import { Tabs, Radio, Space } from 'antd';
+import { Tabs, Card } from 'antd';
 import React, { useState } from "react";
 
 const { TabPane } = Tabs;
@@ -25,9 +25,10 @@ class EthicalPolls extends React.Component{
     const { tabPosition } = this.state;
     const data = Array.from(Array(100).keys()).map((idx) => ({ id: idx })); //FIXME: 존재하는 id만 불러오는 api 필요
     // FIXME Get Questions
-    const question = <div style={{width: '250px', wordBreak: "break-all", wordWrap: "break-word"}}> 
+    const question = <Card style={{width: '300px', wordBreak: "break-all", 
+                                  wordWrap: "break-word"}}> 
       We have to ban macro programs.
-    </div>
+    </Card>
 
     return (
       <>

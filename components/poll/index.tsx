@@ -169,15 +169,17 @@ function Poll(props: Props) {
   return (
     <>
       {!flag && (
+        <div>
           <Card
             style={{ width: "100%", height: cardHeight }}
             title={poll.id + ". " + poll.question}
           >
             <div>
               {pollContent}
-              <ExampleComment></ExampleComment>
             </div>
           </Card>
+          <ExampleComment></ExampleComment>
+        </div>
       )}
     </>
   );
