@@ -40,10 +40,9 @@ const Main: NextPage = () => {
   }
 
   return (
-    <div className={classes.root} style={{padding: '0px 150px'}}>
+    <div className={classes.root} style={{ padding: "0px 150px" }}>
       <Grid container direction="column" spacing={3}>
-
-        <Grid container item spacing={3} style={{padding: '30px'}}>
+        <Grid container item spacing={3} style={{ padding: "30px" }}>
           <Grid item xs={10}>
             <Grid container spacing={2}>
               <Grid item xs={2}>
@@ -68,7 +67,7 @@ const Main: NextPage = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={2} style={{padding: '12px 32px 12px 12px'}}>
+          <Grid item xs={2} style={{ padding: "12px 32px 12px 12px" }}>
             <Button
               variant="contained"
               color="primary"
