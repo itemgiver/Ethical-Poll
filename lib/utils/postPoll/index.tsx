@@ -30,8 +30,6 @@ async function PostPoll(props: Props) {
 
     pollRef.update(props);
   }
-
-  PostPollInfo({ id: props.id, question: props.question });
 }
 
 export default PostPoll;

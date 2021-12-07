@@ -5,6 +5,7 @@ import { Grid, Checkbox, Button, TextField } from "@material-ui/core";
 import { RadialChart } from "react-vis";
 import { Comment, Avatar } from "antd";
 import { PieChart } from "react-minimal-pie-chart";
+import PostPoll from "@lib/utils/postPoll";
 
 type Props = {
   id: number;
@@ -16,7 +17,7 @@ function Poll(props: Props) {
   const flag = loading || error || !value || value.docs.length === 0;
   const poll = flag ? {} : value.docs[0].data();
 
-  const [activeTabKey1, setActiveTabKey1] = useState("Poll");
+  const [toggle, setToggle] = useState("survey");
 
   const checkboxContent = (
     <Grid container spacing={2}>
@@ -57,6 +58,15 @@ function Poll(props: Props) {
 
   const cardHeight = 350;
   const buttonHeight = "3em";
+  const submit = () => {
+    PostPoll({
+      id: poll.id,
+      question: poll.question,
+      agree: poll.agree + (agree === 1) ? 1 : 0,
+      disagree: poll.disagree + (agree === 0) ? 1 : 0,
+    });
+    setToggle("result");
+  };
 
   const checkboxItem = (
     <Grid container style={{ height: cardHeight }}>
@@ -67,7 +77,7 @@ function Poll(props: Props) {
         <Button
           variant="contained"
           color="primary"
-          // onClick={submit}
+          onClick={submit}
           style={{ height: buttonHeight, width: "100%" }}
         >
           Submit
@@ -101,8 +111,7 @@ function Poll(props: Props) {
     ></PieChart>
   );
 
-  /* FIXME: sumbit 누르면 checkboxItem -> resultItem으로 변경 필요(api 연결) */
-  const pollContent = props.id % 2 ? checkboxItem : resultItem;
+  const pollContent = toggle === "survey" ? checkboxItem : resultItem;
 
   /* TODO: 댓글 관련 Content */
   const discussionContent = "notDeveloped";
