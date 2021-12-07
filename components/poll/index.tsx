@@ -1,6 +1,6 @@
 import GetPoll from "@lib/utils/getPoll";
 import React, { useState } from "react";
-import { Card } from "antd";
+import { Tabs, Radio, Space } from 'antd';
 import { Grid, Checkbox, Button, TextField } from "@material-ui/core";
 import { RadialChart } from "react-vis";
 
@@ -9,6 +9,8 @@ type Props = {
 };
 
 function Poll(props: Props) {
+  const { TabPane } = Tabs;
+
   const [agree, setAgree] = useState(-1);
   const [value, loading, error] = GetPoll({ id: props.id });
   const flag = loading || error || !value || value.docs.length === 0;
@@ -149,24 +151,15 @@ function Poll(props: Props) {
   /* TODO: 댓글 관련 Content */
   const discussionContent = "notDeveloped";
 
+  const question = <div style={{width: '100px', height: '100px', wordBreak: "break-all", wordWrap: "break-word"}}>
+    We have to ban macro programs. Macro programs are unmoral.
+  </div>
+
   return (
     <>
-      {!flag && (
-        <Grid item xs={6} lg={4} xl={3}>
-          <Card
-            style={{ width: "100%", height: cardHeight }}
-            title={poll.id + ". " + poll.question}
-            // extra={<a href="#">More</a>}
-            tabList={tabList}
-            activeTabKey={activeTabKey1}
-            onTabChange={(key) => {
-              onPollChange(key);
-            }}
-          >
-            {activeTabKey1 === "Poll" ? pollContent : discussionContent}
-          </Card>
-        </Grid>
-      )}
+      <TabPane tab="Tab1" key={poll.id} style={{width: '1000px', backgroundColor: 'yellow'}}>
+            Content of Tab 1 Content of Tab 1 Content of Tab 1 Content of Tab 1 Content of Tab 1 Content of Tab 1 Content of Tab 1 Content of Tab 1
+      </TabPane>
     </>
   );
 }

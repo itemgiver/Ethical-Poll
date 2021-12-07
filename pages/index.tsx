@@ -40,7 +40,7 @@ const Main: NextPage = () => {
   }
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{padding: '0px 150px'}}>
       <Grid container direction="column" spacing={3}>
         <Grid container item spacing={3}>
           <Grid item xs={10}>
