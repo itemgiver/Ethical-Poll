@@ -1,6 +1,6 @@
 enum CollectionName {
   POLL = "poll",
-  POLLID = "poll_id",
+  POLL_INFO = "poll_info",
 }
 
 export default CollectionName;

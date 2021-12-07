@@ -4,6 +4,8 @@ import CollectionName from "@lib/firebase/collections";
 type Props = {
   id: number;
   question: string;
+  agree: number;
+  disagree: number;
 };
 
 async function PostPoll(props: Props) {

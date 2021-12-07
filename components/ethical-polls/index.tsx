@@ -1,7 +1,7 @@
 import Poll from "@components/poll";
 import { Tabs, Card } from "antd";
 import React, { useState } from "react";
-import GetPollId from "@lib/utils/getPollId";
+import GetPollInfo from "@lib/utils/getPollInfo";
 
 const { TabPane } = Tabs;
 
@@ -11,9 +11,16 @@ type SimplePoll = {
 };
 
 function EthicalPolls() {
-  const [value, loading, error] = GetPollId();
+  const [value, loading, error] = GetPollInfo();
   const flag = loading || error || !value || value.docs.length === 0;
-  const polls: SimplePoll[] = flag ? [] : value.docs[0].data().poll_id;
+  const polls: SimplePoll[] = [];
+
+  if (!flag) {
+    for (var i = 1; i <= value.docs[0].data().len; i++) {
+      polls.push(value.docs[0].data()["poll_" + i]);
+    }
+  }
+
   const poll_tab = (question: string) => {
     return (
       <Card
