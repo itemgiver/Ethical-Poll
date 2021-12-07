@@ -151,6 +151,19 @@ function Poll(props: Props) {
     ></Comment>
   );
 
+  const poll_title = (question: string) => {
+    return (
+      <div
+        style={{
+          wordWrap: "break-word",
+          whiteSpace: 'normal',
+        }}
+      >
+        {question}
+      </div>
+    );
+  };
+
   return (
     <>
       {!flag && (
@@ -161,8 +174,9 @@ function Poll(props: Props) {
               height: cardHeight,
               alignItems: "center",
               justifyContent: "center",
+              whiteSpace: 'normal',
             }}
-            title={"Q. " + poll.question}
+            title={poll_title(poll.question)}
           >
             <div
               style={{
