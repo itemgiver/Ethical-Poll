@@ -36,6 +36,8 @@ const Main: NextPage = () => {
     PostPoll({
       id: Number(questionId),
       question: question,
+      agree: 0,
+      disagree: 0,
     }).then((res) => console.log(res));
   }
 
