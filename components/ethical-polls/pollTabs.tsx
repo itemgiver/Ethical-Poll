@@ -1,7 +1,6 @@
 import Poll from "@components/poll";
-import { Tabs, Card } from "antd";
-import React, { useState } from "react";
-import GetPollInfo from "@lib/utils/getPollInfo";
+import { Tabs } from "antd";
+import React from "react";
 
 const { TabPane } = Tabs;
 

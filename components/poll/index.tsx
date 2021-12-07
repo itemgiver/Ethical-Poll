@@ -4,6 +4,7 @@ import { Card, Button, Row, Col } from "antd";
 import { Comment, Avatar } from "antd";
 import { PieChart } from "react-minimal-pie-chart";
 import PostPoll from "@lib/utils/postPoll";
+import { BlockList } from "net";
 
 type Props = {
   id: number;
@@ -51,10 +52,10 @@ function Poll(props: Props) {
 
   const checkboxContent = (
     <div className="site-button-ghost-wrapper">
-      <Row style={{ width: "100%", height: "300px", verticalAlign: "middle" }}>
-        <Col span={12} style={{ padding: "70px 40px" }}>
+      <Row style={{ width: "100%", height: "300px"}}>
+        <Col span={12} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '50px'}}>
           <Button
-            style={{ width: "100%", height: "100%", fontSize: "25px" }}
+            style={{ width: "100%", height: "100%", fontSize: "25px"}}
             type="primary"
             ghost
             onClick={submitAgree}
@@ -63,7 +64,7 @@ function Poll(props: Props) {
           </Button>
         </Col>
 
-        <Col span={12} style={{ padding: "70px 40px" }}>
+        <Col span={12} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '50px'}}>
           <Button
             style={{ width: "100%", height: "100%", fontSize: "25px" }}
             type="primary"

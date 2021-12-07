@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import PollTabs from "@components/ethical-polls/pollTabs";
 import React, { useState } from "react";
 import { Grid, TextField, Button } from "@material-ui/core";
