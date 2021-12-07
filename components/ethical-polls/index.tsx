@@ -42,7 +42,10 @@ class EthicalPolls extends React.Component{
             Content of Tab 3
           </TabPane> */}
             {data.map((el, idx) => (
-              <Poll id={el.id} key={idx} />
+              <TabPane tab='tabname' key={idx}> 
+                {idx}
+                <Poll id={el.id} key={idx} />
+              </TabPane>
             ))}
         </Tabs>
       </>
