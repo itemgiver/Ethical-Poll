@@ -1,6 +1,6 @@
 ### Demo link
 
-https://ethical-poll.vercel.app/
+https://ethical-poll-2f8wmp7qc-itemgiver.vercel.app
 
 ### 개발 사전 준비 사항
 
