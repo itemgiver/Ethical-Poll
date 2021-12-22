@@ -1,6 +1,6 @@
 # Ethical Poll
 
-Ethical-Poll is a webpage where people can post ethical questions and share their thoughts. This webpage is designed to give more opportunities for people to explore and discuss topics of computer science ethics. Our target users are people who conduct computer science research and aim to help them conduct related ethical research preceding the research.
+Ethical-Poll is a webpage where people can post ethical questions and share their thoughts. This webpage was designed to give more opportunities for people to explore and discuss topics of computer science ethics. Our target users are people who conduct computer science research and aim to help them conduct related ethical research preceding the research.
 
 ## Demo Link
 
