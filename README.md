@@ -4,7 +4,7 @@ Ethical-Poll is a webpage where people can post their ethical questions and shar
 
 ## Demo Link
 
-https://ethical-poll-2f8wmp7qc-itemgiver.vercel.app
+https://ethical-poll-five.vercel.app/
 
 ## Webpage Preview
 
