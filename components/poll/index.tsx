@@ -52,10 +52,18 @@ function Poll(props: Props) {
 
   const checkboxContent = (
     <div className="site-button-ghost-wrapper">
-      <Row style={{ width: "100%", height: "300px"}}>
-        <Col span={12} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '50px'}}>
+      <Row style={{ width: "100%", height: "300px" }}>
+        <Col
+          span={12}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "50px",
+          }}
+        >
           <Button
-            style={{ width: "100%", height: "100%", fontSize: "25px"}}
+            style={{ width: "100%", height: "100%", fontSize: "25px" }}
             type="primary"
             ghost
             onClick={submitAgree}
@@ -64,7 +72,15 @@ function Poll(props: Props) {
           </Button>
         </Col>
 
-        <Col span={12} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '50px'}}>
+        <Col
+          span={12}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "50px",
+          }}
+        >
           <Button
             style={{ width: "100%", height: "100%", fontSize: "25px" }}
             type="primary"
@@ -145,8 +161,11 @@ function Poll(props: Props) {
       }
       content={
         <p>
-          This course is concerned with a broad range of ethical issues that are closely related to, or have their origins at, computing technology and their uses. The aim of the course is not to find the answer to these problems. 
-          Rather, we will examine them from various angles together and discuss what we can do.
+          This course is concerned with a broad range of ethical issues that are
+          closely related to, or have their origins at, computing technology and
+          their uses. The aim of the course is not to find the answer to these
+          problems. Rather, we will examine them from various angles together
+          and discuss what we can do.
         </p>
       }
     ></Comment>
@@ -157,7 +176,7 @@ function Poll(props: Props) {
       <div
         style={{
           wordWrap: "break-word",
-          whiteSpace: 'normal',
+          whiteSpace: "normal",
         }}
       >
         {question}
@@ -174,7 +193,7 @@ function Poll(props: Props) {
               width: "100%",
               alignItems: "center",
               justifyContent: "center",
-              whiteSpace: 'normal',
+              whiteSpace: "normal",
             }}
             title={poll_title(poll.question)}
           >

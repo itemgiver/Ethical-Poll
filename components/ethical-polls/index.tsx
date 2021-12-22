@@ -98,7 +98,7 @@ export default function EthicalPolls() {
           </Grid>
         </Grid>
 
-        <PollTabs polls={polls} />
+        <PollTabs polls={polls.reverse()} />
       </Grid>
     </div>
   );

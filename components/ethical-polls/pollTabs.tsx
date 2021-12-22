@@ -20,7 +20,7 @@ function PollTabs(props: Props) {
         style={{
           width: "300px",
           wordWrap: "break-word",
-          whiteSpace: 'normal',
+          whiteSpace: "normal",
         }}
       >
         {question}
