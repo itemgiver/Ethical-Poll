@@ -8,7 +8,7 @@ https://ethical-poll-five.vercel.app/
 
 ## Webpage Preview
 
-![image](https://user-images.githubusercontent.com/87184009/147063407-30a1c12e-ad67-4869-94d2-1685a8235315.png)
+![chrome-capture](https://user-images.githubusercontent.com/87184009/147425698-791a4df3-6ea2-4f6d-b3e5-3ae320f07875.gif)
 
 ## Expected Outcomes
 
